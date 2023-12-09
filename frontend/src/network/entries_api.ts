@@ -1,0 +1,104 @@
+import { ConflictError, UnauthorizedError } from "../errors/http_errors";
+import { Entry } from "../models/entries";
+import { User } from "../models/user";
+
+async function fetchData(input: RequestInfo, init?: RequestInit) {
+    const response = await fetch(input, init);
+    if (response.ok) {
+        return response;
+    } else {
+        const errorBody = await response.json();
+        const errorMessage = errorBody.error;
+        if (response.status === 401) {
+            throw new UnauthorizedError(errorMessage);
+        } else if (response.status === 409) {
+            throw new ConflictError(errorMessage);
+        } else {
+            throw Error("Request failed with status: " + response.status + " message: " + errorMessage)
+        }
+    }
+}
+
+export async function getLoggedInUser(): Promise<User> {
+    const response = await fetchData("/api/users", { method: "GET" });
+    return response.json();
+}
+
+export interface SignUpCredentials {
+    username: string,
+    email: string,
+    password: string,
+}
+
+export async function signUp(credentials: SignUpCredentials): Promise<User> {
+    const response = await fetchData("/api/users/signup",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(credentials),
+        });
+    return response.json();
+}
+
+export interface LoginCredentials {
+    username: string,
+    password: string,
+}
+
+export async function login(credentials: LoginCredentials): Promise<User> {
+    const response = await fetchData("/api/users/login",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(credentials),
+        });
+    return response.json();
+}
+
+export async function logout() {
+    await fetchData("/api/users/logout", { method: "POST" });
+}
+
+export async function fetchEntries(): Promise<Entry[]> {
+    const response = await fetchData("/api/entries", { method: "GET" });
+    return response.json();
+}
+
+export interface EntryInput {
+    text?: string,
+}
+
+export async function createEntry(entry: EntryInput): Promise<Entry> {
+    const response = await fetchData("/api/entries",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(entry),
+        });
+    return response.json();
+}
+
+export async function deleteEntry(entryId: string) {
+    await fetchData("/api/entries/" + entryId,
+        {
+            method: "DELETE",
+        });
+}
+
+export async function updateEntry(entryId: string, entry: EntryInput): Promise<Entry> {
+    const response = await fetchData("/api/entries/" + entryId,
+        {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(entry),
+        });
+    return response.json()
+}

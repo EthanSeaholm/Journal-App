@@ -1,0 +1,13 @@
+.aboutText {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+}
+
+.linkedInLink {
+    color: black;
+}
+
+.linkedInLink:hover {
+    color: #0000FF;
+}

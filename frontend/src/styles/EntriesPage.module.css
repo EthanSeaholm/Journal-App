@@ -1,0 +1,27 @@
+/*
+
+this is for styling how the entry boxes themselves look on the entries page
+
+*/
+
+.entriesPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.entriesGrid {
+    width: 100%;
+}
+
+.entry {
+    height: 200px;
+    min-width: 150px;
+    transition: box-shadow .2s ease-in-out;
+    cursor: pointer;
+    white-space: pre-line;
+}
+
+.entry:hover {
+    box-shadow: rgb(0, 0, 0) 0px 6px 24px 0px, rgb(0, 0, 0) 0px 0px 0px 1px;
+}
