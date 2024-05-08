@@ -1,6 +1,10 @@
 import express from "express";
 import * as EntriesController from "../controllers/entries";
 
+/**
+ * Implements routing for all entry CRUD (create, read, update, and delete) operation endpoints.
+ */
+
 const router = express.Router();
 
 router.get("/", EntriesController.getEntries);
