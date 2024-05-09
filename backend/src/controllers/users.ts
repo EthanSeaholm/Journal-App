@@ -10,7 +10,7 @@ import bcrypt from "bcrypt";
  * @param next - The next function to call the middleware.
  */
 
-// The getAuthenticatedUser function fetches the authenticated user's information.
+// The getAuthenticatedUser request handler fetches the authenticated user's information.
 export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
     try {
         const user = await UserModel.findById(req.session.userId).select("+email").exec();      // fetches the user and their email field specifically via the userId stored in the session
@@ -26,7 +26,7 @@ interface SignUpBody {
     password?: string,
 }
 
-// The signUp function handles the creation of a new user.
+// The signUp request handler handles the creation of a new user.
 export const signUp: RequestHandler<unknown, unknown, SignUpBody, unknown> = async (req, res, next) => {
     const username = req.body.username;
     const email = req.body.email;
@@ -70,7 +70,7 @@ interface LoginBody {
     password?: string,
 }
 
-// The login function handles the login logic for existing users.
+// The login request handler handles the login logic for existing users.
 export const login: RequestHandler<unknown, unknown, LoginBody, unknown> = async (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;

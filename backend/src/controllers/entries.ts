@@ -11,7 +11,7 @@ import { assertIsDefined } from "../util/assertIsDefined";
  * @param next - The next function to call the middleware.
  */
 
-// The getEntries function fetches all of a user's entries.
+// The getEntries request handler fetches all of a user's entries.
 export const getEntries: RequestHandler = async (req, res, next) => {
     const authenticatedUserId = req.session.userId;
 
@@ -25,7 +25,7 @@ export const getEntries: RequestHandler = async (req, res, next) => {
     }
 };
 
-// The getEntry function fetches a user's specific entry.
+// The getEntry request handler fetches a user's specific entry.
 export const getEntry: RequestHandler = async (req, res, next) => {
     const entryId = req.params.entryId;
     const authenticatedUserId = req.session.userId;
@@ -57,7 +57,7 @@ interface CreateEntryBody {
     text?: string,
 }
 
-// The createEntry functions handles the creation of a new entry.
+// The createEntry request handler handles the creation of a new entry.
 export const createEntry: RequestHandler<unknown, unknown, CreateEntryBody, unknown> = async (req, res, next) => {
     const text = req.body.text;
     const authenticatedUserId = req.session.userId;
@@ -88,7 +88,7 @@ interface UpdateEntryBody {
     text?: string,
 }
 
-// The updateEntry function handles the modification of an existing entry.
+// The updateEntry request handler handles the modification of an existing entry.
 export const updateEntry: RequestHandler<UpdateNoteParams, unknown, UpdateEntryBody, unknown> = async (req, res, next) => {
     const entryId = req.params.entryId;
     const newText = req.body.text;
@@ -125,7 +125,7 @@ export const updateEntry: RequestHandler<UpdateNoteParams, unknown, UpdateEntryB
     }
 };
 
-// The deleteEntry function handles the deletion of an existing entry.
+// The deleteEntry request handler handles the deletion of an existing entry.
 export const deleteEntry: RequestHandler = async (req, res, next) => {
     const entryId = req.params.entryId;
     const authenticatedUserId = req.session.userId;
