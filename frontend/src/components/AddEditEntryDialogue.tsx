@@ -1,9 +1,3 @@
-/*
-
-this file is all about the New Entry button - how it looks and works
-
-*/
-
 import { Button, Form, Modal } from "react-bootstrap";
 import { Entry } from "../models/entries";
 import { useForm } from "react-hook-form";
@@ -11,6 +5,13 @@ import { EntryInput } from "../network/entries_api";
 import * as EntriesApi from "../network/entries_api";
 import TextInputField from "./form/TextInputField";
 import styleUtils from "../styles/utils.module.css";
+
+/**
+ * When attempting to create a new entry or update an existing entry, an entry modal is rendered for the user to enter input into an entry.
+ * Contains an onSubmit functionality to save the new or updated entry to the database.
+ *
+ * @returns {JSX.Element} A React element that renders the Entry modal when creating or editing an entry.
+ */
 
 interface AddEditEntryButtonProps {
   entryToEdit?: Entry;
@@ -33,13 +34,19 @@ const AddEditEntryDialogue = ({
     },
   });
 
+  /**
+   * This function saves a new or updated entry to the database.
+   * If unsuccessful, an error will be thrown.
+   * @param input - The new or updated entry's input.
+   */
+
   async function onSubmit(input: EntryInput) {
     try {
       let entryResponse: Entry;
       if (entryToEdit) {
-        entryResponse = await EntriesApi.updateEntry(entryToEdit._id, input);
+        entryResponse = await EntriesApi.updateEntry(entryToEdit._id, input); // if updating an existing entry
       } else {
-        entryResponse = await EntriesApi.createEntry(input);
+        entryResponse = await EntriesApi.createEntry(input); // if creating a new entry
       }
       onEntrySaved(entryResponse);
     } catch (error) {

@@ -12,10 +12,24 @@ import AboutPage from "./pages/AboutPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import styles from "./styles/App.module.css";
 
+/**
+ * This component renders the core features of the application, including:
+ * - The entire NavBar, which provides navigational links for users to navigate the application.
+ * - Routes, like the "About" page or the "Not Found" page.
+ * - The login modal, which allows a returning user to log in to access their entries.
+ * - The sign-up modal, which allows new users to create a new account.
+ *
+ * @returns {JSX.Element} A React element that renders the core features of the application.
+ */
+
 function App() {
   const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
-  const [showLoginpModal, setShowLoginModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
+  /**
+   * This function fetches the currently logged in user and their information in order to render the appropriate content.
+   */
 
   useEffect(() => {
     async function fetchLoggedInUser() {
@@ -59,7 +73,7 @@ function App() {
             }}
           />
         )}
-        {showLoginpModal && (
+        {showLoginModal && (
           <LoginModal
             onDismiss={() => {
               setShowLoginModal(false);

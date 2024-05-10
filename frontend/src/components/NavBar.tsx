@@ -4,6 +4,13 @@ import NavBarLoggedInView from "./NavBarLoggedInView";
 import NavBarLoggedOutView from "./NavBarLoggedOutView";
 import { Link } from "react-router-dom";
 
+/**
+ * The NavBar component that renders based on whether a user is logged in or not.
+ * If a user is logged in, the NavBarLoggedInView component is rendered.
+ * If not, the NavBarLoggedOutView component is rendered.
+ * @returns {JSX.Element} A React element that renders the NavBar based on whether a user is logged in or not.
+ */
+
 interface NavBarProps {
   loggedInUser: User | null;
   onSignUpClicked: () => void;

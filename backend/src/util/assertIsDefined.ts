@@ -1,6 +1,7 @@
 /**
  * This function asserts that a value is defined and not null or undefined.
  * If a value (val) is falsy, an error is thrown.
+ * 
  * @param val - The value to be checked for a falsy value.
  */
 

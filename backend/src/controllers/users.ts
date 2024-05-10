@@ -5,6 +5,7 @@ import bcrypt from "bcrypt";
 
 /**
  * Handles user sign-up, login, and logout functionalities.
+ * 
  * @param req - The Express request object.
  * @param res - The Express response object.
  * @param next - The next function to call the middleware.
@@ -34,7 +35,7 @@ export const signUp: RequestHandler<unknown, unknown, SignUpBody, unknown> = asy
 
     try {
         if (!username || !email || !passwordRaw) {
-            throw createHttpError(400, "Required information missing");     // if username, email, or password are left blank, a 400 Bad Request response is thrown
+            throw createHttpError(400, "Required information missing");     // if username, email, or password are left blank, a 400 Bad Request error is thrown
         }
 
         const existingUsername = await UserModel.findOne({ username: username }).exec();        // checks to see if a username is already taken

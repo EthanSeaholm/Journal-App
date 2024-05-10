@@ -2,6 +2,24 @@ import { ConflictError, UnauthorizedError } from "../errors/http_errors";
 import { Entry } from "../models/entries";
 import { User } from "../models/user";
 
+/**
+ * API calls that communicate with the backend MongoDB database are handled here.
+ * These API calls handle things like:
+ * - Data fetching.
+ * - User sign-up, login, and logout.
+ * - Creating, reading, updating, and deleting entries.
+ */
+
+/**
+ * An asynchronous function that handles HTTP requests.
+ * 
+ * @param input - What is being fetched, like a URL string or a Request object.
+ * @param init - An object containing any custom settings to be applied to the request
+ * @returns A Promise that resolves to the Response object if the request is successful.
+ *          Throws an UnauthorizedError for 401 status code, ConflictError for 409 status code,
+ *          or a generic Error for other status codes.
+ */
+
 async function fetchData(input: RequestInfo, init?: RequestInit) {
     const response = await fetch(input, init);
     if (response.ok) {
@@ -19,6 +37,12 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
     }
 }
 
+/**
+ * An asynchronous function that fetches a user's information.
+ * 
+ * @returns A Promise that resolves to the user object containing a user's information.
+ */
+
 export async function getLoggedInUser(): Promise<User> {
     const response = await fetchData("/api/users", { method: "GET" });
     return response.json();
@@ -29,6 +53,13 @@ export interface SignUpCredentials {
     email: string,
     password: string,
 }
+
+/**
+ * An asynchronous function that handles new user sign-up.
+ * 
+ * @param credentials - Contains the parameters necessary to successfully create a new user.
+ * @returns A Promise that resolves to the newly created user.
+ */
 
 export async function signUp(credentials: SignUpCredentials): Promise<User> {
     const response = await fetchData("/api/users/signup",
@@ -47,6 +78,13 @@ export interface LoginCredentials {
     password: string,
 }
 
+/**
+ * An asynchronous function that handles exisiting user log-in.
+ * 
+ * @param credentials - Contains the parameters necessary to successfully log in.
+ * @returns A Promise that resolves to the user object containing the user's information.
+ */
+
 export async function login(credentials: LoginCredentials): Promise<User> {
     const response = await fetchData("/api/users/login",
         {
@@ -59,9 +97,19 @@ export async function login(credentials: LoginCredentials): Promise<User> {
     return response.json();
 }
 
+/**
+ * An asynchronous function that handles logging a user out.
+ */
+
 export async function logout() {
     await fetchData("/api/users/logout", { method: "POST" });
 }
+
+/**
+ * An asynchronous function that fetches a user's entries.
+ * 
+ * @returns A Promise that resolves to the entry object containing the user's entries.
+ */
 
 export async function fetchEntries(): Promise<Entry[]> {
     const response = await fetchData("/api/entries", { method: "GET" });
@@ -71,6 +119,13 @@ export async function fetchEntries(): Promise<Entry[]> {
 export interface EntryInput {
     text?: string,
 }
+
+/**
+ * An asynchronous function that handles the creation of a new entry.
+ * 
+ * @param entry - The text within the entry.
+ * @returns A Promise that resolves to the newly created entry.
+ */
 
 export async function createEntry(entry: EntryInput): Promise<Entry> {
     const response = await fetchData("/api/entries",
@@ -84,12 +139,26 @@ export async function createEntry(entry: EntryInput): Promise<Entry> {
     return response.json();
 }
 
+/**
+ * An asynchronous function that handles the deletion of an existing entry.
+ * 
+ * @param entryId - The Id of the entry to be deleted.
+ */
+
 export async function deleteEntry(entryId: string) {
     await fetchData("/api/entries/" + entryId,
         {
             method: "DELETE",
         });
 }
+
+/**
+ * An asynchronous function that handles the modification of an existing entry.
+ * 
+ * @param entryId - The Id of the entry to be updated.
+ * @param entry - The updated text within the entry.
+ * @returns A Promise that resolves to the updated entry object.
+ */
 
 export async function updateEntry(entryId: string, entry: EntryInput): Promise<Entry> {
     const response = await fetchData("/api/entries/" + entryId,

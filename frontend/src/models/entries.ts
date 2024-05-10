@@ -1,9 +1,7 @@
-/*
-
-interfaces define the structure of an (Entry) object by specifying names and types of its properties - makes it so that every entry will have an id, text inside of it, and a
-'created at' and 'updated at' timestamp
-
-*/
+/**
+ * This interface describes the structure of an Entry object. It ensures each entry will have the specified properties.
+ * The properties of an Entry include a unique Id, text, a "created at" timestamp, and an "updated at" timestamp.
+ */
 
 export interface Entry {
     _id: string,

@@ -1,3 +1,8 @@
+/**
+ * Defines custom error types for specific HTTP status codes.
+ * Extends from the base HttpError class, allowing for more concise error handling.
+ */
+
 class HttpError extends Error {
     constructor(message?: string) {
         super(message);
@@ -6,11 +11,13 @@ class HttpError extends Error {
 }
 
 /**
- * Status code: 401
+ * 401 Unauthorized HTTP error.
+ * Inherits from the HttpError class above.
  */
 export class UnauthorizedError extends HttpError { }
 
 /**
- * Status code: 409
+ * 409 Conflict HTTP error.
+ * Inherits from the HttpError class above.
  */
 export class ConflictError extends HttpError { }

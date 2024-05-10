@@ -8,6 +8,13 @@ import styleUtils from "../styles/utils.module.css";
 import { useState } from "react";
 import { UnauthorizedError } from "../errors/http_errors";
 
+/**
+ * This component renders the login modal when a returning user wants to access their entries.
+ * Users MUST be logged in to create, read, update, or delete their entries.
+ *
+ * @returns {JSX.Element} A React element that renders the login modal when an existing user wants to access their entries.
+ */
+
 interface LoginModalProps {
   onDismiss: () => void;
   onLoginSuccessful: (user: User) => void;
@@ -21,6 +28,14 @@ const LoginModal = ({ onDismiss, onLoginSuccessful }: LoginModalProps) => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<LoginCredentials>();
+
+  /**
+   * This function authenticates the user's information when attempting to log in.
+   * If the user's inputted credentials match the user's information in the database, the user is successfully logged in.
+   * If not, a 401 Unauthorized error is thrown.
+   *
+   * @param credentials - The parameters necessary for authenticating an existing user's information.
+   */
 
   async function onSubmit(credentials: LoginCredentials) {
     try {

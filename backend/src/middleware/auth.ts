@@ -4,6 +4,7 @@ import createHttpError from "http-errors";
 /** 
 * Middleware function to authenticate users for accessing certain routes.
 * Checks and validates that the user making the request is authenticated and able to proceed.
+* 
 * @param req - The Express request object.
 * @param res - The Express response object.
 * @param next - The next function to call the middleware.

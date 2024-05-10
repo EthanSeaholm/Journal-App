@@ -1,5 +1,11 @@
 import styles from "../styles/AboutPage.module.css";
 
+/**
+ * This component renders the AboutPage, which contains a link to my personal LinkedIn page.
+ *
+ * @returns {JSX.Element} A React element that renders the AboutPage.
+ */
+
 const AboutPage = () => {
   return (
     <div className={styles.aboutText}>
@@ -11,7 +17,8 @@ const AboutPage = () => {
       <a
         className={styles.linkedInLink}
         href="https://www.linkedin.com/in/ethan-seaholm-a136a91b8/"
-        target="blank"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         My LinkedIn Profile
       </a>

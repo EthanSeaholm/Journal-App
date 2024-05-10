@@ -1,22 +1,12 @@
-/*
-
-this is for styling the actual content and text within the entry boxes - the entry itself
-
-.entryCard, .cardBody, .cardText are all coming from the Entries.tsx file's return statement
-
-*/
-
-
 .entryCard {
-    background-color: rgb(236, 236, 236);
-    
+  background-color: rgb(236, 236, 236);
 }
 
 .cardBody {
-    overflow: hidden;
-    mask-image: linear-gradient(180deg, black 60%, transparent);
+  overflow: hidden;
+  mask-image: linear-gradient(180deg, black 60%, transparent);
 }
 
 .cardText {
-    white-space: pre-line;
+  white-space: pre-line;
 }

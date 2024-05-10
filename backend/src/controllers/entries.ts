@@ -6,6 +6,7 @@ import { assertIsDefined } from "../util/assertIsDefined";
 
 /**
  * Handles the CRUD (create, read, update, and delete) operations for entries.
+ * 
  * @param req - The Express request object.
  * @param res - The Express response object.
  * @param next - The next function to call the middleware.

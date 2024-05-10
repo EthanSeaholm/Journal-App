@@ -8,6 +8,16 @@ import AddEditEntryDialogue from "./AddEditEntryDialogue";
 import Entry from "./Entries";
 import styles from "../styles/EntriesPage.module.css";
 
+/**
+ * Describes and renders the layout of the Entries page when a user is logged in.
+ * Renders a user's existing entries.
+ * Contains a button to create new entries.
+ * While entries are being fetched, a loading placeholder is rendered.
+ * If a user has not created any entries, a unique message is rendered.
+ *
+ * @returns {JSX.Element} A React element implementing the layout of the Entries page.
+ */
+
 const EntriesPageLoggedInView = () => {
   const [entries, setEntries] = useState<EntryModel[]>([]);
   const [entriesLoading, setEntriesLoading] = useState(true);
@@ -15,6 +25,12 @@ const EntriesPageLoggedInView = () => {
 
   const [showAddEntryDialogue, setShowAddEntryDialogue] = useState(false);
   const [entryToEdit, setEntryToEdit] = useState<EntryModel | null>(null);
+
+  /**
+   * This useEffect function fetches all of a user's entries and renders them onto the Entries page upon mount.
+   * It features state that tracks the fetching process, allowing for a future loading placeholder to be implemented.
+   * If an error occurs, it will be thrown and logged to the console.
+   */
 
   useEffect(() => {
     async function loadEntries() {
@@ -33,6 +49,12 @@ const EntriesPageLoggedInView = () => {
     loadEntries();
   }, []);
 
+  /**
+   * This function handles the deletion of entries.
+   *
+   * @param entry - The entry to be passed in for deletion.
+   */
+
   async function deleteEntry(entry: EntryModel) {
     try {
       await EntriesApi.deleteEntry(entry._id);
@@ -44,6 +66,11 @@ const EntriesPageLoggedInView = () => {
       alert(error);
     }
   }
+
+  /**
+   * Describes the layout of the Entries page.
+   * Maps and renders each entry.
+   */
 
   const entriesGrid = (
     <Row xs={1} md={2} xl={3} className={`g-4 ${styles.entriesGrid}`}>
@@ -69,6 +96,7 @@ const EntriesPageLoggedInView = () => {
         <FaPlus />
         New Entry
       </Button>
+      {/* while entries are being fetched, the loading placeholder is rendered */}
       {entriesLoading && <Spinner animation="border" variant="primary" />}
       {showEntriesLoadingError && (
         <p>Something went wrong, please refresh the page!</p>
@@ -78,7 +106,7 @@ const EntriesPageLoggedInView = () => {
           {entries.length > 0 ? (
             entriesGrid
           ) : (
-            <p>You have not created any entries!</p>
+            <p>You have not created any entries!</p> // renders if the user has not created any entries
           )}
         </>
       )}
