@@ -1,1 +1,2 @@
-This is a Full Stack journaling/note-taking application built using TypeScript and the MERN Stack (MongoDB, Express.js, React, Node.js).
+# [Prog]ress
+A full stack journaling/note-taking application built using React, TypeScript, MongoDB, Express.js, and Node.js.
