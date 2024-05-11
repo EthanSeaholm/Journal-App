@@ -1,0 +1,12 @@
+.progress {
+  font-size: larger;
+  color: rgb(66, 178, 253);
+}
+
+.display {
+  font-size: xx-large;
+  display: flex;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 10px;
+}

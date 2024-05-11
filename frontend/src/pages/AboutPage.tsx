@@ -20,7 +20,7 @@ const AboutPage = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        My LinkedIn Profile
+        By Ethan Seaholm
       </a>
     </div>
   );

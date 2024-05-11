@@ -1,3 +1,5 @@
+import styles from "../styles/Welcome.module.css";
+
 /**
  * The component that renders the Entries page when no user is logged in.
  *
@@ -6,8 +8,8 @@
 
 const EntriesPageLoggedOutView = () => {
   return (
-    <p>
-      Welcome! Please sign up or log in to create, view, and update entries...
+    <p className={styles.welcomeTextLoggedOut}>
+      Welcome! Please sign up or log in to access entries...
     </p>
   );
 };

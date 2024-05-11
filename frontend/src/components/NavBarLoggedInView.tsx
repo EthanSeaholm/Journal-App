@@ -31,7 +31,10 @@ const NavBarLoggedInView = ({
 
   return (
     <>
-      <Navbar.Text className="me-2">Welcome, {user.username}!</Navbar.Text>
+      <Navbar.Text className="me-3">
+        Welcome,{" "}
+        <span style={{ color: "rgb(66, 178, 253)" }}>{user.username}</span>
+      </Navbar.Text>
       <Button className={styleUtils.logOutButton} onClick={logout}>
         Log Out
       </Button>

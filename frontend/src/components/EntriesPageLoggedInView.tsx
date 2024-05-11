@@ -7,6 +7,7 @@ import styleUtils from "../styles/utils.module.css";
 import AddEditEntryDialogue from "./AddEditEntryDialogue";
 import Entry from "./Entries";
 import styles from "../styles/EntriesPage.module.css";
+import noEntriesText from "../styles/NoEntries.module.css";
 
 /**
  * Describes and renders the layout of the Entries page when a user is logged in.
@@ -106,7 +107,9 @@ const EntriesPageLoggedInView = () => {
           {entries.length > 0 ? (
             entriesGrid
           ) : (
-            <p>You have not created any entries!</p> // renders if the user has not created any entries
+            <p className={noEntriesText.noEntriesText}>
+              You have not created any entries!
+            </p> // renders if the user has not created any entries
           )}
         </>
       )}

@@ -3,6 +3,7 @@ import { User } from "../models/user";
 import NavBarLoggedInView from "./NavBarLoggedInView";
 import NavBarLoggedOutView from "./NavBarLoggedOutView";
 import { Link } from "react-router-dom";
+import styles from "../styles/Progress.module.css";
 
 /**
  * The NavBar component that renders based on whether a user is logged in or not.
@@ -27,8 +28,11 @@ const NavBar = ({
   return (
     <Navbar bg="black" variant="dark" expand="sm" sticky="top">
       <Container>
-        <Navbar.Brand as={Link} to="/">
-          [Prog]ress
+        <Navbar.Brand as={Link} to="/" className={styles.display}>
+          <span className={styles.progress}>
+            [<i>Prog</i>]
+          </span>
+          ress
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" />
         <Navbar.Collapse id="main-navbar">

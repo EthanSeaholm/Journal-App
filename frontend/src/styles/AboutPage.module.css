@@ -1,13 +1,17 @@
 .aboutText {
-    text-align: center;
-    margin: auto;
-    width: 100%;
+  font-size: larger;
+  color: white;
+  text-align: center;
+  margin: auto;
+  width: 100%;
 }
 
 .linkedInLink {
-    color: black;
+  color: rgb(66, 178, 253);
+  transition: color 0.15s ease-in-out;
+  text-decoration: none;
 }
 
 .linkedInLink:hover {
-    color: #0000FF;
+  color: #0d6efd;
 }
