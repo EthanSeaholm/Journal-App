@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 import styles from "../styles/Progress.module.css";
 
 /**
- * The NavBar component that renders based on whether a user is logged in or not.
+ * The NavBar component that renders the [Prog]ress header, the About page, and the user sign-up and login functionalities.
+ * The [Prog]ress header is a clickable navigation icon that routes users back to the Entries (home) page.
  * If a user is logged in, the NavBarLoggedInView component is rendered.
  * If not, the NavBarLoggedOutView component is rendered.
- * @returns {JSX.Element} A React element that renders the NavBar based on whether a user is logged in or not.
+ * @returns {JSX.Element} A React element that renders the navigation bar.
  */
 
 interface NavBarProps {

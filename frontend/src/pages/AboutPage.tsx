@@ -10,28 +10,31 @@ import progessStyles from "../styles/Progress.module.css";
 const AboutPage = () => {
   return (
     <div className={aboutPageStyles.aboutText}>
-      <p>
-        When I first began learning to program, I was overwhelmed by the sheer
-        amount of information being thrown at me. Trying to retain everything, I
-        took notes. I began on pen and paper, then I started using Notepad, and
-        then I eventually began using Docs and Word. It was not ideal, but it
-        got the job done.
-      </p>
-      <p>
-        However, a problem eventually presented itself. Having taken notes on
-        multiple platforms, I realized I was having to constantly bounce back
-        and forth looking for the right note. It was exhausting! After all, I
-        only needed {<i>one</i>} place to be able to consistently write and save
-        notes and easily access them whenever I needed to...
-      </p>
-      <p>
-        Hence,{" "}
-        <span className={progessStyles.progressAbout}>[{<i>Prog</i>}]</span>
-        ress. A full stack note-taking web application built using React,
-        TypeScript, MongoDB, Express.js, and Node.js. Write, save, update, and
-        delete notes while staying organized all in one.
-      </p>
-      <p>Did you get all that? Best make a note to make sure.</p>
+      <div className={aboutPageStyles.border}>
+        <p>
+          When I first began learning to program, I was overwhelmed by the sheer
+          amount of information being thrown at me. Trying to retain everything,
+          I took notes. I began on pen and paper, then I started using Notepad,
+          and then I eventually began using Docs and Word. It was not ideal, but
+          it got the job done.
+        </p>
+        <p>
+          However, a problem eventually presented itself. Having taken notes
+          using mulitple different methods, I realized I was having to
+          constantly bounce back and forth looking for the right note. It was
+          exhausting! After all, I only needed {<i>one</i>} place to be able to
+          consistently write and save notes and easily access them whenever I
+          needed to...
+        </p>
+        <p>
+          Hence,{" "}
+          <span className={progessStyles.progressAbout}>[{<i>Prog</i>}]</span>
+          ress: A Full Stack Note-taking Web Application built using React,
+          TypeScript, MongoDB, Express.js, and Node.js. Write, save, update, and
+          delete notes while staying organized all in one.
+        </p>
+        <p>Did you get all that? Best make a note to make sure!</p>
+      </div>
       <p className={aboutPageStyles.thanks}>Thank you for stopping by!</p>
       <a
         className={aboutPageStyles.linkedInLink}

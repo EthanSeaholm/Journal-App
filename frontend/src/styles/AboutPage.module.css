@@ -17,5 +17,14 @@
 }
 
 .thanks {
-  margin-top: 80px;
+  margin-top: 1rem;
+}
+
+.border {
+  border-style: solid;
+  border-top: 0cap;
+  border-left: 0cap;
+  border-right: 0cap;
+  border-width: 1px;
+  border-color: rgb(66, 178, 253);
 }
