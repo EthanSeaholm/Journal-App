@@ -25,7 +25,8 @@ const AboutPage = () => {
         notes and easily access them whenever I needed to...
       </p>
       <p>
-        Hence, {<i className={progessStyles.progressAbout}>[Prog]</i>}
+        Hence,{" "}
+        <span className={progessStyles.progressAbout}>[{<i>Prog</i>}]</span>
         ress. A full stack note-taking web application built using React,
         TypeScript, MongoDB, Express.js, and Node.js. Write, save, update, and
         delete notes while staying organized all in one.
