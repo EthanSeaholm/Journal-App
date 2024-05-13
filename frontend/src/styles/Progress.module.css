@@ -1,5 +1,9 @@
-.progress {
+.progressNav {
   font-size: larger;
+  color: rgb(66, 178, 253);
+}
+
+.progressAbout {
   color: rgb(66, 178, 253);
 }
 

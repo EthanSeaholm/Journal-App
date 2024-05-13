@@ -1,4 +1,5 @@
-import styles from "../styles/AboutPage.module.css";
+import aboutPageStyles from "../styles/AboutPage.module.css";
+import progessStyles from "../styles/Progress.module.css";
 
 /**
  * This component renders the AboutPage, which contains a link to my personal LinkedIn page.
@@ -8,14 +9,31 @@ import styles from "../styles/AboutPage.module.css";
 
 const AboutPage = () => {
   return (
-    <div className={styles.aboutText}>
+    <div className={aboutPageStyles.aboutText}>
       <p>
-        This full stack application was built by Ethan Seaholm using MongoDB,
-        Express, React, and Node.js.
+        When I first began learning to program, I was overwhelmed by the sheer
+        amount of information being thrown at me. Trying to retain everything, I
+        took notes. I began on pen and paper, then I started using Notepad, and
+        then I eventually began using Docs and Word. It was not ideal, but it
+        got the job done.
       </p>
-      <p>Thank you for stopping by!</p>
+      <p>
+        However, a problem eventually presented itself. Having taken notes on
+        multiple platforms, I realized I was having to constantly bounce back
+        and forth looking for the right note. It was exhausting! After all, I
+        only needed {<i>one</i>} place to be able to consistently write and save
+        notes and easily access them whenever I needed to...
+      </p>
+      <p>
+        Hence, {<i className={progessStyles.progressAbout}>[Prog]</i>}
+        ress. A full stack note-taking web application built using React,
+        TypeScript, MongoDB, Express.js, and Node.js. Write, save, update, and
+        delete notes while staying organized all in one.
+      </p>
+      <p>Did you get all that? Best make a note to make sure.</p>
+      <p className={aboutPageStyles.thanks}>Thank you for stopping by!</p>
       <a
-        className={styles.linkedInLink}
+        className={aboutPageStyles.linkedInLink}
         href="https://www.linkedin.com/in/ethan-seaholm-a136a91b8/"
         target="_blank"
         rel="noopener noreferrer"

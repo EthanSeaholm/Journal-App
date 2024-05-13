@@ -29,7 +29,7 @@ const NavBar = ({
     <Navbar bg="black" variant="dark" expand="sm" sticky="top">
       <Container>
         <Navbar.Brand as={Link} to="/" className={styles.display}>
-          <span className={styles.progress}>
+          <span className={styles.progressNav}>
             [<i>Prog</i>]
           </span>
           ress
