@@ -1,3 +1,4 @@
+import cors from "cors";
 import app from "./app";
 import env from "./util/validateEnv";
 import mongoose from "mongoose";
@@ -9,6 +10,8 @@ import mongoose from "mongoose";
 
 const port = env.PORT;
 
+app.use(cors());
+
 // connects application to MongoDB database
 mongoose.connect(env.MONGO_CONNECTION_STRING)
     .then(() => {
@@ -17,4 +20,6 @@ mongoose.connect(env.MONGO_CONNECTION_STRING)
             console.log("Server running on port: " + port);
         });
     })
-    .catch(console.error);
+    .catch((error) => {
+        console.error("Error connecting to the database: ", error);
+    });
