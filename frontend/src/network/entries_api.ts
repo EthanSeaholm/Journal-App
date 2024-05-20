@@ -44,7 +44,7 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
  */
 
 export async function getLoggedInUser(): Promise<User> {
-    const response = await fetchData("https://api.prog-ress.live/api/users", { method: "GET" });
+    const response = await fetchData("https://api.prog-ress.live/users", { method: "GET" });
     return response.json();
 }
 
@@ -62,7 +62,7 @@ export interface SignUpCredentials {
  */
 
 export async function signUp(credentials: SignUpCredentials): Promise<User> {
-    const response = await fetchData("https://api.prog-ress.live/api/users/signup",
+    const response = await fetchData("https://api.prog-ress.live/users/signup",
         {
             method: "POST",
             headers: {
@@ -86,7 +86,7 @@ export interface LoginCredentials {
  */
 
 export async function login(credentials: LoginCredentials): Promise<User> {
-    const response = await fetchData("https://api.prog-ress.live/api/users/login",
+    const response = await fetchData("https://api.prog-ress.live/users/login",
         {
             method: "POST",
             headers: {
@@ -102,7 +102,7 @@ export async function login(credentials: LoginCredentials): Promise<User> {
  */
 
 export async function logout() {
-    await fetchData("https://api.prog-ress.live/api/users/logout", { method: "POST" });
+    await fetchData("https://api.prog-ress.live/users/logout", { method: "POST" });
 }
 
 /**
@@ -112,7 +112,7 @@ export async function logout() {
  */
 
 export async function fetchEntries(): Promise<Entry[]> {
-    const response = await fetchData("https://api.prog-ress.live/api/entries", { method: "GET" });
+    const response = await fetchData("https://api.prog-ress.live/entries", { method: "GET" });
     return response.json();
 }
 
@@ -128,7 +128,7 @@ export interface EntryInput {
  */
 
 export async function createEntry(entry: EntryInput): Promise<Entry> {
-    const response = await fetchData("https://api.prog-ress.live/api/entries",
+    const response = await fetchData("https://api.prog-ress.live/entries",
         {
             method: "POST",
             headers: {
@@ -146,7 +146,7 @@ export async function createEntry(entry: EntryInput): Promise<Entry> {
  */
 
 export async function deleteEntry(entryId: string) {
-    await fetchData("https://api.prog-ress.live/api/entries/" + entryId,
+    await fetchData("https://api.prog-ress.live/entries/" + entryId,
         {
             method: "DELETE",
         });
@@ -161,7 +161,7 @@ export async function deleteEntry(entryId: string) {
  */
 
 export async function updateEntry(entryId: string, entry: EntryInput): Promise<Entry> {
-    const response = await fetchData("https://api.prog-ress.live/api/entries/" + entryId,
+    const response = await fetchData("https://api.prog-ress.live/entries/" + entryId,
         {
             method: "PATCH",
             headers: {

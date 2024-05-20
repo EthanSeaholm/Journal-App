@@ -38,8 +38,8 @@ app.use(session({
 app.get("/", (req: Request, res: Response) => {
     res.status(200).send({ message: "Welcome to the [Prog]ress API" }); // base route to confirm the API is working
 });
-app.use("/api/entries", requiresAuth, entriesRoutes);   // entries route to fetch and display entries - auth is required
-app.use("/api/users", userRoutes);  // users route to fetch and display current user
+app.use("/entries", requiresAuth, entriesRoutes);   // entries route to fetch and display entries - auth is required
+app.use("/users", userRoutes);  // users route to fetch and display current user
 
 // error handler for unknown/nonexisting endpoints
 app.use((req, res, next) => {
