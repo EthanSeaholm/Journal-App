@@ -10,7 +10,11 @@ import mongoose from "mongoose";
 
 const port = env.PORT;
 
-app.use(cors());
+app.use(cors({
+    origin: "https://www.prog-ress.live",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
 
 // connects application to MongoDB database
 mongoose.connect(env.MONGODB_URI)
