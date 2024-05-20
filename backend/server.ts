@@ -1,6 +1,6 @@
 import cors from "cors";
 import app from "./app";
-import env from "./util/validateEnv";
+import env from "./src/util/validateEnv";
 import mongoose from "mongoose";
 
 /**
@@ -13,7 +13,7 @@ const port = env.PORT;
 app.use(cors());
 
 // connects application to MongoDB database
-mongoose.connect(env.MONGO_CONNECTION_STRING)
+mongoose.connect(env.MONGODB_URI)
     .then(() => {
         console.log("Mongoose connected");
         app.listen(port, () => {
@@ -23,3 +23,5 @@ mongoose.connect(env.MONGO_CONNECTION_STRING)
     .catch((error) => {
         console.error("Error connecting to the database: ", error);
     });
+
+export default app;
