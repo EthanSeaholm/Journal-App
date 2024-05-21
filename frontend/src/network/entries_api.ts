@@ -44,7 +44,7 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
  */
 
 export async function getLoggedInUser(): Promise<User> {
-    const response = await fetchData("https://api.prog-ress.live/users", { method: "GET" });
+    const response = await fetchData("https://api.prog-ress.live/users", { method: "GET", credentials: "include", });
     return response.json();
 }
 
@@ -93,6 +93,7 @@ export async function login(credentials: LoginCredentials): Promise<User> {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(credentials),
+            credentials: "include",
         });
     return response.json();
 }
@@ -102,7 +103,7 @@ export async function login(credentials: LoginCredentials): Promise<User> {
  */
 
 export async function logout() {
-    await fetchData("https://api.prog-ress.live/users/logout", { method: "POST" });
+    await fetchData("https://api.prog-ress.live/users/logout", { method: "POST", credentials: "include", });
 }
 
 /**
@@ -112,7 +113,7 @@ export async function logout() {
  */
 
 export async function fetchEntries(): Promise<Entry[]> {
-    const response = await fetchData("https://api.prog-ress.live/entries", { method: "GET" });
+    const response = await fetchData("https://api.prog-ress.live/entries", { method: "GET", credentials: "include", });
     return response.json();
 }
 
@@ -134,7 +135,7 @@ export async function createEntry(entry: EntryInput): Promise<Entry> {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(entry),
+            body: JSON.stringify(entry), credentials: "include",
         });
     return response.json();
 }
@@ -149,6 +150,7 @@ export async function deleteEntry(entryId: string) {
     await fetchData("https://api.prog-ress.live/entries/" + entryId,
         {
             method: "DELETE",
+            credentials: "include",
         });
 }
 
@@ -168,6 +170,7 @@ export async function updateEntry(entryId: string, entry: EntryInput): Promise<E
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(entry),
+            credentials: "include",
         });
     return response.json()
 }

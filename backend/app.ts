@@ -17,11 +17,15 @@ import { requiresAuth } from "./src/middleware/auth";
 
 const app = express();  // creates and stores an express application in "app"
 
-app.use(cors({
+const corsOptions = {
     origin: "https://www.prog-ress.live",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-}));
+    credentials: true
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 app.use(morgan("dev"));     // enables color-coded reponse statuses for development use
 
