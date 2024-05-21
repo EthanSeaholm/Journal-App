@@ -1,4 +1,3 @@
-import cors from "cors";
 import app from "./app";
 import env from "./src/util/validateEnv";
 import mongoose from "mongoose";
@@ -9,10 +8,6 @@ import mongoose from "mongoose";
  */
 
 const port = env.PORT;
-
-app.use(cors({
-    origin: "https://prog-ress.live"
-}));
 
 // connects application to MongoDB database
 mongoose.connect(env.MONGODB_URI)
@@ -25,12 +20,5 @@ mongoose.connect(env.MONGODB_URI)
     .catch((error) => {
         console.error("Error connecting to the database: ", error);
     });
-
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://www.prog-ress.live");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    next();
-});
 
 export default app;

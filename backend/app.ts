@@ -1,4 +1,5 @@
 import "dotenv/config";
+import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
 import entriesRoutes from "./src/routes/entries";
 import userRoutes from "./src/routes/users";
@@ -15,6 +16,12 @@ import { requiresAuth } from "./src/middleware/auth";
  */
 
 const app = express();  // creates and stores an express application in "app"
+
+app.use(cors({
+    origin: "https://www.prog-ress.live",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
 
 app.use(morgan("dev"));     // enables color-coded reponse statuses for development use
 
